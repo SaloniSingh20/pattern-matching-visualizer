@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pattern Matching Visualizer — KMP & Boyer-Moore</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Pattern Matching Visualizer</h1>
+      <p class="subtitle">Interactive demonstration of KMP (LPS) and Boyer-Moore (bad-character)</p>
+    </header>
+
+    <section class="controls">
+      <div class="row">
+        <label>Text
+          <textarea id="text" rows="2" placeholder="Enter the text here">abxabcabcabyabcabx</textarea>
+        </label>
+        <label>Pattern
+          <input id="pattern" placeholder="Enter pattern" value="abcaby" />
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="algo">
+          <input type="radio" name="algo" value="kmp" checked /> KMP
+        </label>
+        <label class="algo">
+          <input type="radio" name="algo" value="bm" /> Boyer-Moore (bad-char)
+        </label>
+
+        <label>Speed
+          <input id="speed" type="range" min="50" max="1200" value="250" />
+        </label>
+
+        <div class="buttons">
+          <button id="build">Build Tables</button>
+          <button id="step">Next</button>
+          <button id="auto">Auto</button>
+          <button id="playMatch">Play to Match</button>
+          <button id="finish">Finish</button>
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="visual">
+      <div class="pane">
+        <h2>Alignment</h2>
+        <div id="alignment" class="alignment" aria-live="polite"></div>
+      </div>
+
+      <div class="pane">
+        <h2>Tables</h2>
+        <div id="tables" class="tables"></div>
+      </div>
+    </section>
+
+    <section class="steps">
+      <h2>Steps of Execution</h2>
+      <ol id="stepsList"></ol>
+    </section>
+
+
+    <footer>
+      <small>Tip: use <strong>Build Tables</strong> first to see LPS / last-occurrence. Auto respects speed slider.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
